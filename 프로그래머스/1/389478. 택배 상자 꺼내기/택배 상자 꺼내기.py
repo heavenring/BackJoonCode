@@ -23,9 +23,9 @@
 def solution(n, w, num):
     answer = 0
     
-    all_f = (n - 1) // w 
     box_f = (num - 1) // w 
-    
+    all_f = (n - 1) // w 
+
     start_f = num - ((num - 1) // w) * w 
     end_f = n - ((n - 1) // w) * w 
     
