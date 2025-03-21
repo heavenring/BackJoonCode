@@ -1,8 +1,8 @@
-# list의 del 함수, index 함수 활용 -> 시간초과
+# del 함수, index 함수 활용 -> 시간초과
 # for c in completion:
 #       del participant[participant.index(c)]
 
-
+# sort함수와 max함수 활용 
 def solution(participant, completion):
     answer = ''
     
