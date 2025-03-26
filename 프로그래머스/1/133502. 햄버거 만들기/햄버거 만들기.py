@@ -23,8 +23,10 @@ def solution(ingredient):
                 if pre_bread:
                     i = pre_bread[-1] - 1
                     del pre_bread[-1]
+                # 이전에 발견한 빵이 없다면 바로 뒤로 이동
                 else:
                     i -= 1
+                    
             # 햄버거가 만들어지지 않으면 빵 위치 저장
             else:
                 pre_bread.append(i)        
