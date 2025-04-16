@@ -39,7 +39,7 @@ def solution(priorities, location):
     # 우선 순위대로 데이터를 정렬시킨다.
     high_pri_list = sorted(priorities)
     
-    while len(priorities):
+    while priorities:
         # 현재 프로세스를 proc_num에 할당 후 deque에서 제거
         proc_num = priorities.popleft() 
         
@@ -57,12 +57,12 @@ def solution(priorities, location):
             # 실행 대기 deque에 재할당
             priorities.append(proc_num)
             
-            # 실행 대기중인 프로세스의 위치값 업데이트
-            if not location:
-                location = len(priorities)
-        
+            
         # 실행 대기중인 프로세스의 위치값 업데이트
-        location -= 1
+        if not location:
+            location = len(priorities) - 1
+        else:
+            location -= 1
             
             
     return answer
