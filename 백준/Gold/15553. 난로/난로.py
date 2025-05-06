@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     # print(f"time: {time}")
 
-    # 방문 시간이 긴 순서로 정렬한다 -> 오름차순
+    # 방문 시간이 짧은 순서로 정렬한다 -> 오름차순
     time.sort()
     # print(f"tiem_sort: {time}")
 
