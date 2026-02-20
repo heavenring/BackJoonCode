@@ -8,8 +8,8 @@ class Solution {
         
         Collections.sort(phoneBook);
         
-        for (int i = 0; i < phoneBook.size(); i++){
-            if (i + 1 < phoneBook.size() && phoneBook.get(i + 1).startsWith(phoneBook.get(i))){
+        for (int i = 0; i < phoneBook.size() - 1; i++){
+            if (phoneBook.get(i + 1).startsWith(phoneBook.get(i))){
                 answer = false;
                 break;
             }
