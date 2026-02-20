@@ -3,20 +3,23 @@ import java.util.*;
 class Solution {
     public String solution(String[] participant, String[] completion) {
         
-        // 익숙한 ArrayList 사용
-        ArrayList<String> join = new ArrayList(Arrays.asList(participant));
-        ArrayList<String> complate = new ArrayList(Arrays.asList(completion));
+        Map<String, Integer> map = new HashMap();
         
-        // Collections 내림차순 연습
-        Collections.sort(join, Collections.reverseOrder());
-        Collections.sort(complate, Collections.reverseOrder());
+        for (String name : participant){
+            map.putIfAbsent(name, 0);
+            map.put(name, map.get(name) + 1);
+        }
         
-        for (int i = 0; i < complate.size(); i++){
-            if (!join.get(i).equals(complate.get(i))){
-                return join.get(i);
+        for (String name : completion){
+            map.put(name, map.get(name) - 1);
+        }
+        
+        for (String key : map.keySet()){
+            if (map.get(key) != 0){
+                return key;
             }
         }
         
-        return join.get(join.size() - 1);
+        return "";
     }
 }
