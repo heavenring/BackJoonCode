@@ -12,7 +12,6 @@ int dy[] = { 0, 1, 1, 1, 0, -1, -1, -1 };
 /* 주변 폭탄 개수 확인 및 폭탄이 없을경우 추가 탐색 */
 string zero_boom(vector<vector<string>>& board, int x, int y) {
 
-	//cout << "\n start location: " << x << " " << y << "\n";
 	int boom_cnt = 0;
 	for (int i = 0; i < 8; i++) {
 		int nx = x + dx[i];
@@ -22,15 +21,10 @@ string zero_boom(vector<vector<string>>& board, int x, int y) {
 			continue;
 		}
 
-		//cout << "find nx location: " << nx << " " << ny << "\n";
-		//cout << "find nx value: " << board[nx][ny] << "\n";
 		if (board[nx][ny] == "*") {
-			//cout << "boom location: " << nx << " " << ny << "\n";
 			boom_cnt++;
 		} 
 	}
-
-	//cout << "boom_cnt: " << boom_cnt << "\n";
 
 	// 주변에 폭탄이 없을경우 주변 8칸도 탐색
 	if (!boom_cnt) {
@@ -92,21 +86,10 @@ int main() {
 			}
 		}
 
-		//cout << "board\n";
-		//for (int i = 0; i < n; i++) {
-		//	for (int j = 0; j < n; j++) {
-		//		cout << board[i][j] << " ";
-		//	}
-		//	cout << "\n--------------------\n";
-		//}
-		//cout << "\n";
-
 		int answer = 0;
 		// 주변에 폭탄이 없는 칸 먼저 확인
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				//cout << "board location: " << i << " " << j << "\n";
-				//cout << "board value: " << board[i][j] << "\n";
 				if (board[i][j] == ".") {
 					zero_boom(board, i, j);
 
@@ -117,16 +100,6 @@ int main() {
 			}
 		}
 
-
-		//cout << "zero check board\n";
-		//for (int i = 0; i < n; i++) {
-		//	for (int j = 0; j < n; j++) {
-		//		cout << board[i][j] << " ";
-		//	}
-		//	cout << "\n--------------------\n";
-		//}
-		//cout << "\n";
-
 		// 나머지 칸 확인
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
@@ -136,7 +109,6 @@ int main() {
 				}
 			}
 		}
-
 
 		cout << "#" << t << " " << answer << endl;
 	}
