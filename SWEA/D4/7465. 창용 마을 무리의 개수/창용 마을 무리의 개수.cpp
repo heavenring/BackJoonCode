@@ -14,7 +14,7 @@ int find_parent(vector<int>& parent, int people) {
 }
 
 
-
+/* 부모 갱신 */
 void update_parent(vector<int>& parent, int a, int b) {
 	
 	if (a < b) {
@@ -38,18 +38,22 @@ int main() {
 			parent[i] = i;
 		}
 
+		// 각 간선 간 연결된 노드들의 부모 갱신
 		for (int i = 0; i < m; i++) {
 			int a, b;
 			cin >> a >> b;
 			
+			// 각 노드의 최상위 부모 탐색
 			int root_a = find_parent(parent, a);
 			int root_b = find_parent(parent, b);
 
+			// 최상위 부모가 다르다면 부모 갱신
 			if (root_a != root_b) {
 				update_parent(parent, root_a, root_b);
 			}
 		}
 
+		// 최상위 부모 노드의 개수 세기
 		long long answer = 0;
 		for (int i = 1; i <= n; i++) {
 			if (parent[i] == i) {
