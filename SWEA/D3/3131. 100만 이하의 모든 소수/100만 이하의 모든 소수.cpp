@@ -6,19 +6,18 @@ using namespace std;
 
 int main() {
 	
+	string answer = "";
 	vector<bool> prime(1000001, true);
 	prime[0] = prime[1] = false;
-	for (int i = 2; i * i < prime.size(); i++) {
+	for (long long i = 2; i <= 1000000; i++) {
 		if (prime[i]) {
-			for (int j = i * i; j < prime.size(); j += i) {
+			answer += to_string(i) + " ";
+
+			for (long long j = i * i; j <= 1000000; j += i) {
 				prime[j] = false;
 			}
 		}
 	}
 
-	for (int i = 2; i < prime.size(); i++) {
-		if (prime[i]) {
-			cout << i << " ";
-		}
-	}
+	cout << answer;
 }
