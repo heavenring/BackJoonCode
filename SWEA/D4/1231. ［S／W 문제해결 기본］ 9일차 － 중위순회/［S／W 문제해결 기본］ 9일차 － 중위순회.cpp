@@ -6,6 +6,7 @@
 using namespace std;
 
 
+/* 중위 순회 */
 void inorder(const vector<string>& node, const vector<vector<int>>& tree, int node_num) {
 	// 왼쪽 자식 노드 방문
 	if (tree[node_num][0] != 0) {
@@ -30,18 +31,20 @@ int main() {
 
 		// 각 정점의 문자와 왼쪽, 오른쪽 자식 노드 번호 저장
 		vector<string> node(n + 1);
-		vector<vector<int>> tree(n + 1, vector<int>(2));
+		vector<vector<int>> tree(n + 1, vector<int>(2)); 
 		for (int depth = 1; depth <= n; depth++) {
 			int node_num, left, right;
 			string c;
-			cin >> node_num>> c;
+			cin >> node_num >> c;
 			node[node_num] = c;
 
+			// 왼쪽 자식이 있을 경우
 			if (node_num * 2 <= n) {
 				cin >> left;
 				tree[node_num][0] = left;
 			}
 
+			// 오른쪽 자식이 있을 경우
 			if (node_num * 2 + 1 <= n) {
 				cin >> right;
 				tree[node_num][1] = right;
