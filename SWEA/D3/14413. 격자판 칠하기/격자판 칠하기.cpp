@@ -55,32 +55,36 @@ int main() {
 		pair<pair<int, int>, string> first_block;
 		first_block = find_first_block(board);
 
-		if (first_block.first.first == -1) {
-			cout << "#" << t << " " << "possible" << endl;
-		}
-		else {
-			bool possible = true;
+		// 블록의 색이 정해진게 없다면, 모든 칸이 빈칸이므로 가능
+		bool possible = true;
+		if (first_block.first.first != -1) {
 			int base_i = first_block.first.first;
 			int base_j = first_block.first.second;
 			string base_color = first_block.second;
 
-			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < m; j++) {
+			for (int i = 0; i < n && possible; i++) {
+				for (int j = 0; j < m && possible; j++) {
+					// 현재 칸의 색이 정해져 있을 때
 					if (board[i][j] == "#" || board[i][j] == ".") {
-						string expected_color = ((i + j) % 2 == (base_i + base_j) % 2) ? base_color : (base_color == "#" ? "." : "#");
-						if (board[i][j] != expected_color) {
-							possible = false;
-							break;
+
+						// 같은 색 배열에 있어야할 때
+						if ((i + j) % 2 == (base_i + base_j) % 2) {
+							// 다른 색이 해당 위치에 있을 경우 불가능
+							if (board[i][j] != base_color) {
+								possible = false;
+							}
+						} else {
+							// 다른 색 배열에 있어야할 때
+							// 같은 색이 해당 위치에 있을 경우 불가능
+							if (board[i][j] == base_color) {
+								possible = false;
+							}
 						}
 					}
 				}
-
-				if (!possible) {
-					break;
-				}
 			}
-
-			cout << "#" << t << " " << (possible ? "possible" : "impossible") << endl;
 		}
+
+		cout << "#" << t << " " << (possible ? "possible" : "impossible") << endl;
 	}
 }
