@@ -6,6 +6,8 @@
 
 using namespace std;
 
+
+/* 색칠 과정 출력용 함수 */
 void test_output(vector<vector<string>>& flag) {
 	for (int i = 0; i < flag.size(); i++) {
 		for (int j = 0; j < flag[i].size(); j++) {
