@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#define zisu 35
+#define zisu 30
 
 using namespace std;
 
@@ -17,10 +17,10 @@ int main() {
 		int now_zisu = zisu;
 		while (now_zisu > -1) {
 			// 이진수 생성
-			if (m - (static_cast<long long>(1) << now_zisu) < 0) {
+			if (m - (1 << now_zisu) < 0) {
 				two_num += "0";
 			} else {
-				m -= (static_cast<long long>(1) << now_zisu);
+				m -= (1 << now_zisu);
 				two_num += "1";
 			}
 
